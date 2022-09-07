@@ -6,8 +6,8 @@ export const useCounterStore = defineStore("counter", {
     numberOfChanges: 0,
   }),
   actions: {
-    increment() {
-      this.counter++;
+    increment(value: number) {
+      this.counter += value;
     },
   },
 });
