@@ -1,6 +1,6 @@
 import { Person } from "../../../domain/domain/model/common/Person";
 
-export class User extends Person {
+export class UserData extends Person {
   private _username: string;
   private _password: string;
 
