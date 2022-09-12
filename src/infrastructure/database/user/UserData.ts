@@ -18,6 +18,10 @@ export class UserData extends Person {
     this._password = password;
   }
 
+  get id(): string {
+    return this._id;
+  }
+
   get username(): string {
     return this._username;
   }
