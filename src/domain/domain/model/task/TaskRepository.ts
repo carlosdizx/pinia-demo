@@ -1,9 +1,4 @@
 import { Task } from "./Task";
+import { CrudOperations } from "../common/CrudOperations";
 
-export interface TaskRepository {
-  save(task: Task): Task;
-  list(): Task[];
-  findById(id: string): Task;
-  update(task: Task, id: string): Task;
-  delete(id: string): void;
-}
+export interface TaskRepository extends CrudOperations<Task, string> {}
