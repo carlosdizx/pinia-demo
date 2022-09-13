@@ -9,12 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "object-mapper": "^6.2.0",
     "pinia": "^2.0.22",
     "prettier": "^2.7.1",
     "vue": "^3.2.37",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "@types/object-mapper": "^6.2.0",
     "@vitejs/plugin-vue": "^3.1.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
