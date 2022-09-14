@@ -1,4 +1,4 @@
 import { Task } from "./Task";
-import { CrudFireStoreOperations } from "../common/CrudFireStoreOperations";
+import { CrudFirestoreOperations } from "../common/CrudFirestoreOperations";
 
-export interface TaskRepository extends CrudFireStoreOperations<Task, string> {}
+export interface TaskRepository extends CrudFirestoreOperations<Task, string> {}

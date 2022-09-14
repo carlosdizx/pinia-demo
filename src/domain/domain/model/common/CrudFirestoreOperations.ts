@@ -1,4 +1,4 @@
-export interface CrudFireStoreOperations<T, ID> {
+export interface CrudFirestoreOperations<T, ID> {
   save(entity: T, collectionDB: string): Promise<T>;
   list(collectionDB: string): Promise<T[]>;
   findById(id: ID, collectionDB: string): Promise<T>;

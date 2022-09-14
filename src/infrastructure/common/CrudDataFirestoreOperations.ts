@@ -1,4 +1,4 @@
-import { CrudFireStoreOperations } from "../../domain/domain/model/common/CrudFireStoreOperations";
+import { CrudFirestoreOperations } from "../../domain/domain/model/common/CrudFirestoreOperations";
 import {
   addDoc,
   collection,
@@ -12,8 +12,8 @@ import {
 } from "firebase/firestore";
 import { FIRESTORE } from "../../app/firebaseConfig";
 
-export abstract class CrudDataOperations<T, ID>
-  implements CrudFireStoreOperations<T, ID>
+export class CrudDataFirestoreOperations<T, ID>
+  implements CrudFirestoreOperations<T, ID>
 {
   async save(entity: T, collectionDB: string): Promise<T> {
     // @ts-ignore
@@ -44,7 +44,7 @@ export abstract class CrudDataOperations<T, ID>
 
   delete = async (id: ID, collectionDB: string): Promise<void> => {
     // @ts-ignore
-    const deletation = await deleteDoc(doc(FIRESTORE, collectionDB, id));
+    await deleteDoc(doc(FIRESTORE, collectionDB, id));
     return Promise.resolve();
   };
 }
