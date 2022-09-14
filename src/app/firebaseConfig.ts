@@ -16,17 +16,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const FIRESTORE = getFirestore(app);
-export const AUTH = getAuth(app);
-export const APK = firebaseConfig.apiKey;
-
-export const DOWNLOAD_URL = (nombre: string, carpeta: string) =>
-  getDownloadURL(ref(getStorage(), carpeta + "/" + nombre));
-
-export const UPLOAD_FILE = async (
-  file: any,
-  nombre: string,
-  carpeta: string
-) => {
-  const referencia = ref(getStorage(), carpeta + "/" + nombre);
-  return await uploadBytes(referencia, file);
-};
+//export const AUTH = getAuth(app);
+//export const APK = firebaseConfig.apiKey;
