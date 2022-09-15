@@ -5,6 +5,7 @@
   <button @click="listar">Listar!!</button>
   <button @click="buscar">Buscar!!</button>
   <button @click="actualizar">Actualizar!!</button>
+  <button @click="eliminar">Eliminar!!</button>
 </template>
 
 <script lang="ts" setup>
@@ -38,10 +39,8 @@ const actualizar = async () => {
 };
 
 const eliminar = () => {
-  //qJ2GEUuXjdLqAKlLDtwq
-  const person: Person = new Person().map({ id: "1", name: "xd" });
-  console.log("guardar", person);
-  personAdapter.save(person);
+  personAdapter.delete("HaEqsKdaeZD0NpBcStgv");
+  console.log("elimiando id:", "HaEqsKdaeZD0NpBcStgv");
 };
 
 const counterStore = useCounterStore();

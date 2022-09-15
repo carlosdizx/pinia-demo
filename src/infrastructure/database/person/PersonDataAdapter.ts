@@ -20,7 +20,7 @@ export class PersonDataAdapter extends CrudDataFirestoreOperations<Person> {
     return super.update(entity, id, collectionDB);
   }
 
-  async delete(id: string, collectionDB: string): Promise<void> {
+  async delete(id: string): Promise<void> {
     return super.delete(id, collectionDB);
   }
 }
