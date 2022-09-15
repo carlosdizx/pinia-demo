@@ -12,12 +12,13 @@ import {
 } from "firebase/firestore";
 import { FIRESTORE } from "../../app/firebaseConfig";
 
+const toObjectFirebase = (entity: any) => JSON.parse(JSON.stringify(entity));
+
 export class CrudDataFirestoreOperations<T, ID>
   implements CrudFirestoreOperations<T, ID>
 {
   async save(entity: T | any, collectionDB: string): Promise<T> {
-    console.log("lo que llega", entity, collectionDB);
-    await addDoc(collection(FIRESTORE, collectionDB), JSON.parse(JSON.stringify(entity)));
+    await addDoc(collection(FIRESTORE, collectionDB), toObjectFirebase(entity));
     return Promise.resolve(entity);
   }
 
