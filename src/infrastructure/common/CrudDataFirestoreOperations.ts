@@ -11,13 +11,11 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { FIRESTORE } from "../../app/firebaseConfig";
-import firebase from "firebase/compat";
-import DocumentData = firebase.firestore.DocumentData;
 
 const toObjectFirebase = (entity: any) => JSON.parse(JSON.stringify(entity));
 
-export class CrudDataFirestoreOperations<T, ID>
-  implements CrudFirestoreOperations<T, ID>
+export class CrudDataFirestoreOperations<T>
+  implements CrudFirestoreOperations<T, string>
 {
   async save(entity: T | any, collectionDB: string): Promise<T> {
     entity["created_at"] = new Date();
@@ -35,21 +33,18 @@ export class CrudDataFirestoreOperations<T, ID>
     return Promise.resolve(list);
   }
 
-  async findById(id: ID, collectionDB: string): Promise<T> {
-    // @ts-ignore
+  async findById(id: string, collectionDB: string): Promise<T> {
     const obj: any = (await getDoc(doc(FIRESTORE, collectionDB, id))).data();
     return Promise.resolve(obj);
   }
 
-  async update(entity: T | any, id: ID, collectionDB: string): Promise<T> {
+  async update(entity: T | any, id: string, collectionDB: string): Promise<T> {
     entity["update_at"] = new Date();
-    // @ts-ignore
     await setDoc(doc(FIRESTORE, collectionDB, id), entity);
     return Promise.resolve(entity);
   }
 
-  delete = async (id: ID, collectionDB: string): Promise<void> => {
-    // @ts-ignore
+  delete = async (id: string, collectionDB: string): Promise<void> => {
     await deleteDoc(doc(FIRESTORE, collectionDB, id));
     return Promise.resolve();
   };
