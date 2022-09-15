@@ -16,4 +16,8 @@ export class PersonDataAdapter extends CrudDataFirestoreOperations<
   async list(): Promise<Person[]> {
     return super.list(collectionDB);
   }
+
+  async findById(id: string): Promise<Person> {
+    return super.findById(id, collectionDB);
+  }
 }

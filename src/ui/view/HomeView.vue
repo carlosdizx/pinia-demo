@@ -3,6 +3,7 @@
   <h3>Numero de cambios: {{ counterStore.numberOfChanges }}</h3>
   <button @click="guardar">Guardar!!</button>
   <button @click="listar">Listar!!</button>
+  <button @click="buscar">Buscar!!</button>
 </template>
 
 <script lang="ts" setup>
@@ -21,11 +22,9 @@ const listar = async () => {
   console.log("listar:", lista);
 };
 
-const buscar = () => {
-  //qJ2GEUuXjdLqAKlLDtwq
-  const person: Person = new Person().map({ id: "1", name: "xd" });
-  console.log("guardar", person);
-  personAdapter.save(person);
+const buscar = async () => {
+  const person = await personAdapter.findById("FNaUtMgJlk8vJRPADsnB");
+  console.log(person);
 };
 
 const actualizar = () => {

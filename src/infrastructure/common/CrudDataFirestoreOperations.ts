@@ -11,6 +11,8 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { FIRESTORE } from "../../app/firebaseConfig";
+import firebase from "firebase/compat";
+import DocumentData = firebase.firestore.DocumentData;
 
 const toObjectFirebase = (entity: any) => JSON.parse(JSON.stringify(entity));
 
@@ -28,10 +30,6 @@ export class CrudDataFirestoreOperations<T, ID>
     const collectionData = collection(FIRESTORE, collectionDB);
     const queryData = query(collectionData, orderBy("created_at", "desc"));
     const result = await getDocs(queryData);
-    const result2 = await getDocs(collection(FIRESTORE, collectionDB));
-    result2.forEach((doc) => {
-      console.log(doc.id, "=>", doc.data());
-    });
     const list: T[] = [];
     result.forEach((item) => list.push(item.data() as T));
     return Promise.resolve(list);
@@ -39,7 +37,7 @@ export class CrudDataFirestoreOperations<T, ID>
 
   async findById(id: ID, collectionDB: string): Promise<T> {
     // @ts-ignore
-    const obj: T = (await getDoc(doc(FIRESTORE, collectionDB, id))).data();
+    const obj: any = (await getDoc(doc(FIRESTORE, collectionDB, id))).data();
     return Promise.resolve(obj);
   }
 
