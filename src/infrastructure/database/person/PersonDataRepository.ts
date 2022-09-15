@@ -2,4 +2,4 @@ import { CrudFirestoreOperations } from "../../../domain/model/common/CrudFirest
 import { Person } from "../../../domain/model/person/Person";
 
 export interface PersonDataRepository
-  extends CrudFirestoreOperations<Person, string> {}
+  extends CrudFirestoreOperations<Person, String> {}

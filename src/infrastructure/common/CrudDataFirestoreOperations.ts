@@ -15,9 +15,9 @@ import { FIRESTORE } from "../../app/firebaseConfig";
 export class CrudDataFirestoreOperations<T, ID>
   implements CrudFirestoreOperations<T, ID>
 {
-  async save(entity: T, collectionDB: string): Promise<T> {
-    // @ts-ignore
-    await addDoc(collection(FIRESTORE, collectionDB), T);
+  async save(entity: T | any, collectionDB: string): Promise<T> {
+    console.log("lo que llega", entity, collectionDB);
+    await addDoc(collection(FIRESTORE, collectionDB), JSON.parse(JSON.stringify(entity)));
     return Promise.resolve(entity);
   }
 

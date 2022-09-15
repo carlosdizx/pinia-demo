@@ -5,10 +5,10 @@ import { PersonDataRepository } from "./PersonDataRepository";
 
 const collectionDB: string = "person";
 
-export class PersonDataAdapter
-  extends CrudDataFirestoreOperations<Person, string>
-  implements PersonDataRepository
-{
+export class PersonDataAdapter extends CrudDataFirestoreOperations<
+  Person,
+  string
+> {
   async save(entity: Person): Promise<Person> {
     return super.save(entity, collectionDB);
   }
