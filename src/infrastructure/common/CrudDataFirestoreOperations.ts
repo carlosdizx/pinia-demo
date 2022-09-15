@@ -47,8 +47,8 @@ export class CrudDataFirestoreOperations<T>
     return Promise.resolve(entity);
   }
 
-  delete = async (id: string, collectionDB: string): Promise<void> => {
+  async delete(id: string, collectionDB: string): Promise<void> {
     await deleteDoc(doc(FIRESTORE, collectionDB, id));
     return Promise.resolve();
-  };
+  }
 }
