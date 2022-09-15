@@ -18,6 +18,8 @@ export class CrudDataFirestoreOperations<T, ID>
   implements CrudFirestoreOperations<T, ID>
 {
   async save(entity: T | any, collectionDB: string): Promise<T> {
+    entity["created_at"] = new Date();
+    entity["update_at"] = new Date();
     await addDoc(collection(FIRESTORE, collectionDB), toObjectFirebase(entity));
     return Promise.resolve(entity);
   }
@@ -26,6 +28,10 @@ export class CrudDataFirestoreOperations<T, ID>
     const collectionData = collection(FIRESTORE, collectionDB);
     const queryData = query(collectionData, orderBy("created_at", "desc"));
     const result = await getDocs(queryData);
+    const result2 = await getDocs(collection(FIRESTORE, collectionDB));
+    result2.forEach((doc) => {
+      console.log(doc.id, "=>", doc.data());
+    });
     const list: T[] = [];
     result.forEach((item) => list.push(item.data() as T));
     return Promise.resolve(list);
@@ -37,7 +43,8 @@ export class CrudDataFirestoreOperations<T, ID>
     return Promise.resolve(obj);
   }
 
-  async update(entity: T, id: ID, collectionDB: string): Promise<T> {
+  async update(entity: T | any, id: ID, collectionDB: string): Promise<T> {
+    entity["update_at"] = new Date();
     // @ts-ignore
     await setDoc(doc(FIRESTORE, collectionDB, id), entity);
     return Promise.resolve(entity);
