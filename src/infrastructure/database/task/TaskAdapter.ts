@@ -1,5 +1,5 @@
-import { TaskRepository } from "../../../domain/domain/model/task/TaskRepository";
-import { Task } from "../../../domain/domain/model/task/Task";
+import { TaskRepository } from "../../../domain/model/task/TaskRepository";
+import { Task } from "../../../domain/model/task/Task";
 import { TaskDataRepository } from "./TaskDataRepository";
 import { TaskData } from "./TaskData";
 import { AdapterFirestoreOperation } from "../../common/AdapterFirestoreOperation";

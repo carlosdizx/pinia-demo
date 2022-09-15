@@ -1,4 +1,4 @@
-import { Mapper } from "../../../domain/domain/model/common/Mapper";
+import { Mapper } from "../../../domain/model/common/Mapper";
 
 export class TaskData implements Mapper<TaskData, any> {
   map(src: TaskData): any {

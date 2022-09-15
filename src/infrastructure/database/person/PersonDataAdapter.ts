@@ -1,6 +1,6 @@
 import { CrudDataFirestoreOperations } from "../../common/CrudDataFirestoreOperations";
-import { Person } from "../../../domain/domain/model/person/Person";
-import { PersonRepository } from "../../../domain/domain/model/person/PersonRepository";
+import { Person } from "../../../domain/model/person/Person";
+import { PersonRepository } from "../../../domain/model/person/PersonRepository";
 import { PersonDataRepository } from "./PersonDataRepository";
 
 const collectionDB: string = "person";

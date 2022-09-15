@@ -1,4 +1,4 @@
-import { CrudFirestoreOperations } from "../../domain/domain/model/common/CrudFirestoreOperations";
+import { CrudFirestoreOperations } from "../../domain/model/common/CrudFirestoreOperations";
 import {
   addDoc,
   collection,
