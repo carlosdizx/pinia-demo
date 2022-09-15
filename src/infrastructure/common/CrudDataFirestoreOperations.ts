@@ -39,8 +39,11 @@ export class CrudDataFirestoreOperations<T>
   }
 
   async update(entity: T | any, id: string, collectionDB: string): Promise<T> {
+    const entityFind: any | T = await this.findById(id, collectionDB);
+    console.log("find", entityFind);
+    entity["created_at"] = entityFind["created_at"];
     entity["update_at"] = new Date();
-    await setDoc(doc(FIRESTORE, collectionDB, id), entity);
+    await setDoc(doc(FIRESTORE, collectionDB, id), toObjectFirebase(entity));
     return Promise.resolve(entity);
   }
 

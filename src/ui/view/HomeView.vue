@@ -4,6 +4,7 @@
   <button @click="guardar">Guardar!!</button>
   <button @click="listar">Listar!!</button>
   <button @click="buscar">Buscar!!</button>
+  <button @click="actualizar">Actualizar!!</button>
 </template>
 
 <script lang="ts" setup>
@@ -23,15 +24,17 @@ const listar = async () => {
 };
 
 const buscar = async () => {
-  const person = await personAdapter.findById("FNaUtMgJlk8vJRPADsnB");
+  const person = await personAdapter.findById("HaEqsKdaeZD0NpBcStgv");
   console.log(person);
 };
 
-const actualizar = () => {
-  //qJ2GEUuXjdLqAKlLDtwq
-  const person: Person = new Person().map({ id: "1", name: "xd" });
-  console.log("guardar", person);
-  personAdapter.save(person);
+const actualizar = async () => {
+  const person: Person = new Person().map({ id: "1", name: "Carlos" });
+  const personUpdated = await personAdapter.update(
+    person,
+    "HaEqsKdaeZD0NpBcStgv"
+  );
+  console.log("actualizado", personUpdated);
 };
 
 const eliminar = () => {

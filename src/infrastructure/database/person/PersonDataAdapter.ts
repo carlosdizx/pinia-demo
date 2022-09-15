@@ -1,7 +1,5 @@
 import { CrudDataFirestoreOperations } from "../../common/CrudDataFirestoreOperations";
 import { Person } from "../../../domain/model/person/Person";
-import { PersonRepository } from "../../../domain/model/person/PersonRepository";
-import { PersonDataRepository } from "./PersonDataRepository";
 
 const collectionDB: string = "persons";
 
@@ -16,5 +14,9 @@ export class PersonDataAdapter extends CrudDataFirestoreOperations<Person> {
 
   async findById(id: string): Promise<Person> {
     return super.findById(id, collectionDB);
+  }
+
+  async update(entity: any, id: string): Promise<Person> {
+    return super.update(entity, id, collectionDB);
   }
 }
