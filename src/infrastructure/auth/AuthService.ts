@@ -1,6 +1,5 @@
 import firebase from "firebase/compat";
 import { AUTH } from "../../app/firebaseConfig";
-import User = firebase.User;
 
 import {
   createUserWithEmailAndPassword,
@@ -10,20 +9,26 @@ import {
 } from "firebase/auth";
 
 export class AuthService {
-  public singUp = async (email: string, password: string): Promise<void> => {
+  public static singUp = async (
+    email: string,
+    password: string
+  ): Promise<void> => {
     const result = await createUserWithEmailAndPassword(AUTH, email, password);
     if (result.user) await this.sendEmailVerification(result.user);
   };
 
-  public singIn = async (email: string, password: string): Promise<void> => {
+  public static singIn = async (
+    email: string,
+    password: string
+  ): Promise<void> => {
     await signInWithEmailAndPassword(AUTH, email, password);
   };
 
-  private sendEmailVerification = async (user: User | any): Promise<void> => {
+  private static sendEmailVerification = async (user: any): Promise<void> => {
     await sendEmailVerification(user);
   };
 
-  public logout = async () => await signOut(AUTH);
+  public static logout = async () => await signOut(AUTH);
 
-  public currentEmailUser = () => AUTH.currentUser?.email;
+  public static currentEmailUser = () => AUTH.currentUser?.email;
 }

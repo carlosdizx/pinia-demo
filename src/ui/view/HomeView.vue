@@ -9,6 +9,7 @@
   <hr />
   <button @click="singUp">SinUp</button>
   <button @click="singIn">SinIn</button>
+  <button @click="logout">Logout</button>
 </template>
 
 <script lang="ts" setup>
@@ -18,7 +19,6 @@ import { Person } from "../../domain/model/person/Person";
 import { AuthService } from "../../infrastructure/auth/AuthService";
 
 const personAdapter: PersonDataAdapter = new PersonDataAdapter();
-const auth = new AuthService();
 
 const guardar = async () => {
   const person: Person = new Person().map({ id: "1", name: "xd" });
@@ -50,16 +50,21 @@ const eliminar = () => {
 };
 
 //----------------------------------------------------------------------------------------------------------------------
-const singUp = () => {
-  console.log(auth.currentEmailUser());
-  auth.singUp("carlosbiche98@gmail.com", "12345678");
-  console.log(auth.currentEmailUser());
+const singUp = async () => {
+  console.log(AuthService.currentEmailUser());
+  await AuthService.singUp("carlosbiche98@gmail.com", "12345678");
+  console.log(AuthService.currentEmailUser());
 };
 
-const singIn = () => {
-  console.log(auth.currentEmailUser());
-  auth.singIn("carlosbiche98@gmail.com", "12345678");
-  console.log(auth.currentEmailUser());
+const singIn = async () => {
+  console.log(AuthService.currentEmailUser());
+  await AuthService.singIn("carlosbiche98@gmail.com", "12345678");
+  console.log(AuthService.currentEmailUser());
+};
+
+const logout = async () => {
+  console.log(AuthService.currentEmailUser());
+  await AuthService.logout();
 };
 
 const counterStore = useCounterStore();
