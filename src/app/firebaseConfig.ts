@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 const env = import.meta.env
 
 const firebaseConfig = {
@@ -15,3 +16,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const FIRESTORE = getFirestore(app);
+export const AUTH = getAuth(app);
