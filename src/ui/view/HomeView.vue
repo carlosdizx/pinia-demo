@@ -8,12 +8,13 @@
   <button @click="eliminar">Eliminar!!</button>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup >
 import { PersonDataAdapter } from "../../infrastructure/database/person/PersonDataAdapter";
-
-const personAdapter: PersonDataAdapter = new PersonDataAdapter();
 import { useCounterStore } from "../../infrastructure/store/counter";
 import { Person } from "../../domain/model/person/Person";
+
+const personAdapter: PersonDataAdapter = new PersonDataAdapter();
+
 const guardar = async () => {
   const person: Person = new Person().map({ id: "1", name: "xd" });
   await personAdapter.save(person);
