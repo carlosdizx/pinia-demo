@@ -1,9 +1,13 @@
 import { CrudDataFirestoreOperations } from "../../common/CrudDataFirestoreOperations";
 import { Person } from "../../../domain/model/person/Person";
+import { PersonRepository } from "../../../domain/model/person/PersonRepository";
 
 const collectionDB: string = "persons";
 
-export class PersonDataAdapter extends CrudDataFirestoreOperations<Person> {
+export class PersonDataAdapter
+  extends CrudDataFirestoreOperations<Person>
+  implements PersonRepository
+{
   async save(entity: Person): Promise<Person> {
     return super.save(entity, collectionDB);
   }
